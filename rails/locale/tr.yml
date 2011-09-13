@@ -1,5 +1,4 @@
 # Turkish translations for Ruby on Rails
-# by Ozgun Ataman (ozataman@gmail.com)
 
 tr:
   locale:
@@ -73,7 +72,64 @@ tr:
     am: "öğleden önce"
     pm: "öğleden sonra"
 
-  datetime:
+ 
+
+    support:
+  array:
+      sentence_connector: "ve"
+      skip_last_comma: true
+      words_connector: ", "
+      two_words_connector: " ve "
+      last_word_connector: " ve "
+ 
+    select:
+      prompt: "Lütfen seçiniz"
+     
+ number:
+    format:
+      precision: 2
+      separator: ','
+      delimiter: '.'
+    currency:
+      format:
+        unit: 'TL'
+        format: '%n %u'
+        separator: ','
+        delimiter: '.'
+        precision: 2
+    percentage:
+      format:
+        delimiter: '.'       
+    precision:
+      format:
+        delimiter: '.'
+    human:
+      format:
+        delimiter: '.'
+        separator: ','
+        precision: 2
+
+    storage_units:
+	format:'%n %u'
+	units:
+	  byte:
+	    one:"Bit"
+  	    other:"Bit"
+	  kb:"KB"
+	  mb:"MB"
+	  gb:"GB"
+	  tb:"TB"
+    decimal_units:
+	format:"%n %u"
+	units:
+	   thousand: "Bin"
+	   million:  "Milyon"
+	   billion: "Milyar"
+	   trillion:"Trilyon"
+	   quadrillion:"Katrilyon"
+
+
+ datetime:
     distance_in_words:
       half_a_minute: 'yarım dakika'
       less_than_x_seconds:
@@ -111,54 +167,28 @@ tr:
       almost_x_years:
         one:   "neredeyse 1 yıl"
         other: "neredeyse %{count} yıl"
+      
+      prompts:
+	year:"Yıl"
+	month:"Ay"
+	day:"Gun"
+	hour:"Saat"
+	minute:"Dakika"
+	second:"Saniye"
+	
+   helpers:
+	select:
+	  prompt:"Lütfen Seçiniz"
+ 
+     submit:
+	create:'Oluştur %{model}'
+	update:'Güncelle %{model}'
+	submit:'Kaydet %{model}'
 
-  number:
-    format:
-      precision: 2
-      separator: ','
-      delimiter: '.'
-    currency:
-      format:
-        unit: 'TL'
-        format: '%n %u'
-        separator: ','
-        delimiter: '.'
-        precision: 2
-    percentage:
-      format:
-        delimiter: '.'
-        separator: ','
-        precision: 2
-    precision:
-      format:
-        delimiter: '.'
-        separator: ','
-    human:
-      format:
-        delimiter: '.'
-        separator: ','
-        precision: 2
+  errors:
+	format:"%{attribute} %{message}"
 
-  support:
-    select:
-      # default value for :prompt => true in FormOptionsHelper
-      prompt: "Lütfen seçiniz"
-    array:
-      sentence_connector: "ve"
-      skip_last_comma: true
-      words_connector: ", "
-      two_words_connector: " ve "
-      last_word_connector: " ve "
-
-  activerecord:
-    errors:
-      template:
-        header:
-          one:    "%{model} girişi kaydedilemedi: 1 hata."
-          other:  "%{model} girişi kadedilemedi: %{count} hata."
-        body: "Lütfen aşağıdaki hataları düzeltiniz:"
-
-      messages:
+       messages: &errors_messages
         inclusion: "kabul edilen bir kelime değil"
         exclusion: "kullanılamaz"
         invalid: "geçersiz"
@@ -169,13 +199,27 @@ tr:
         too_long: "çok uzun (en fazla %{count} karakter)"
         too_short: "çok kısa (en az %{count} karakter)"
         wrong_length: "yanlış uzunlukta (tam olarak %{count} karakter olmalı)"
-        taken: "hali hazırda kullanılmakta"
         not_a_number: "geçerli bir sayı değil"
         greater_than: "%{count} sayısından büyük olmalı"
         greater_than_or_equal_to: "%{count} sayısına eşit veya büyük olmalı"
         equal_to: "tam olarak %{count} olmalı"
         less_than: "%{count} sayısından küçük olmalı"
         less_than_or_equal_to: "%{count} sayısına eşit veya küçük olmalı"
+                                                                          
         odd: "tek olmalı"
         even: "çift olmalı"
-        record_invalid: "Doğrulama başarısız oldu: %{errors}"
+        
+ activerecord:
+    errors:
+      template:
+        header:
+          one:    "%{model} girişi kaydedilemedi: 1 hata."
+          other:  "%{model} girişi kaydedilemedi: %{count} hata."
+        body: "Lütfen aşağıdaki hataları düzeltiniz:"
+       
+      messages:
+	taken: "hali hazırda kullanılmakta"
+	record_invalid: "Doğrulama başarısız oldu: %{errors}"
+        <<:*errors_messages
+      full_messages:
+	format:"%{attribute} %{message}">>
